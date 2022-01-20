@@ -9,21 +9,25 @@ let example = "tests"
 function wordOfTheDay(word, userWord){
    // console.log('word?', word, userWord)
    let userList = document.createElement('li')
+   // userList.setAttribute("id", "wordId")
+   
     let splitWord = word.split('')
     let userInput = userWord.split('')
 
+
 for(let i = 0; i < userInput.length; i++){
    // console.log(userInput[i], i, 'word', splitWord[0])
-    if(userInput[i] === splitWord[0]){
-        console.log('userInput', userInput[i])
-        
+    if(userInput[i] === splitWord[0] ){    
+       userList.innerHTML += `<span style='color: green;'>${userInput[i]}</span>`
     }else if(word.includes(userInput[i])){
-        console.log('letter matches', userInput[i])
+        userList.innerHTML += `<span style='color: yellow;'>${userInput[i]}</span>`
+    }else{
+        userList.innerHTML += `<span style='color: black;'>${userInput[i]}</span>`
     }
+
 
 }  
 
-    userList.innerHTML = userWord
     wordList.appendChild(userList)
   
 }
