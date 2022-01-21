@@ -8,7 +8,7 @@ const divCounter = document.getElementById('div-counter')
 const myModal = document.getElementById('my-modal')
 const modalContent = document.getElementById('modal-content')
 
-let example = "tests"
+let example = "hello"
 
 function refresh() {    
     setTimeout(function () {
@@ -23,7 +23,7 @@ function wordOfTheDay(word, userWord){
     let splitWord = word.split('')
 
     if(word === userWord){
-        modalContent.innerHTML = 'CONGRATS'
+        modalContent.innerHTML = `<span style='color: pink;'>CONGRATS</span>`
         refresh()
     }
 
@@ -67,13 +67,13 @@ function userSubmitted(e){
   chances -= 1
 
   if(chances === 0){
-      modalContent.innerHTML = 'GAME OVER'
+      modalContent.innerHTML = `<span style='color: blue;'>GAME OVER</span>`
       refresh()
   }
 
   counter.innerHTML = `${chances}`
   divCounter.appendChild(counter)
-  console.log('chances are', chances)
+ // console.log('chances are', chances)
 
 }
 

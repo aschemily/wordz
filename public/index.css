@@ -9,13 +9,14 @@ h1{
 h2{
     text-align: center;
     font-size: 60px;
-    font-family: 'Dongle', sans-serif;
+    font-family: 'Balsamiq Sans', cursive;
+    color:rgb(212, 0, 255);
 }
 
 #modal-content{
     text-align: center;
     font-size: 60px;
-    font-family: 'Dongle', sans-serif;
+    font-family: 'Rubik Beastly', cursive;
 }
 
 #word-form{
