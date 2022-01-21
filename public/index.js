@@ -3,39 +3,18 @@ const inputWord = document.getElementById('input-word')
 const submitBtn = document.getElementById('submit-word')
 const form = document.getElementById('word-form')
 const wordList = document.getElementById('word-list')
+const counter = document.getElementById('counter')
+const divCounter = document.getElementById('div-counter')
+const myModal = document.getElementById('my-modal')
+const modalContent = document.getElementById('modal-content')
 
 let example = "tests"
 
-// function wordOfTheDay(word, userWord){
-  
-//    let userList = document.createElement('li')
-//     let splitWord = word.split('')
-//     let userInput = userWord.split('')
-  
-//     for(let i = 0; i < splitWord.length; i++){
-//         for(let j = 0; j < userInput.length; j++){
-
-//             //console.log('word', splitWord[i], i, "user input", userInput[j], j)
-
-//            if(splitWord[i] === userInput[j] && i === j ){
-//               console.log('user word', userInput[j], 'actual word', splitWord[i])
-              
-//              // letter.innerHTML = `<span style='color: green;'>${userInput[j]}</span>`
-              
-//            } else if(word.includes(userInput[j])){
-//                 console.log('inside second  if', userInput[j], 'word is', word, 'j', j, 'i', i)
-//              //  userList.innerHTML = `<span style='color: orange;'>${userInput[j]}</span>`
-              
-               
-//            }
-           
-//         }
-     
-    
-//     }
-//     wordList.appendChild(userList)
-  
-// }
+function refresh() {    
+    setTimeout(function () {
+        location.reload()
+    }, 4000);
+}
 
 function wordOfTheDay(word, userWord){
    // console.log('word', word, 'user word', userWord)
@@ -43,9 +22,10 @@ function wordOfTheDay(word, userWord){
     let splitUserWord = userWord.split('')
     let splitWord = word.split('')
 
-    // if(word === userWord){
-    //     userList.innerHTML = `<span style='color: green;'>${userWord}</span>`
-    // }
+    if(word === userWord){
+        modalContent.innerHTML = 'CONGRATS'
+        refresh()
+    }
 
     splitUserWord.forEach((ltr, i)=>{
        // console.log(ltr, i)
@@ -54,6 +34,8 @@ function wordOfTheDay(word, userWord){
       if((i === 0 && ltr === splitWord[0]) || (i === 1 && ltr === splitWord[1]) || (i === 2 && ltr === splitWord[2]) || (i === 3 && ltr === splitWord[3]) || (i === 4 && ltr === splitWord[4])){
           console.log('ltr', ltr, i)
           userList.innerHTML += `<span style='color: green;'>${ltr}</span>`
+      
+          
       }else if(word.includes(ltr)){
           console.log('letters in word', ltr)
           userList.innerHTML += `<span style='color: orange;'>${ltr}</span>`
@@ -66,9 +48,12 @@ function wordOfTheDay(word, userWord){
       
     })
  
+   // myModal.appendChild(modalContent)
+   
     wordList.appendChild(userList)
 }
 
+let chances = 6
 
 function userSubmitted(e){
     e.preventDefault()
@@ -78,6 +63,17 @@ function userSubmitted(e){
 
   wordOfTheDay(wordOfTheDaySplit, userWord)
   inputWord.value = ""
+
+  chances -= 1
+
+  if(chances === 0){
+      modalContent.innerHTML = 'GAME OVER'
+      refresh()
+  }
+
+  counter.innerHTML = `${chances}`
+  divCounter.appendChild(counter)
+  console.log('chances are', chances)
 
 }
 
