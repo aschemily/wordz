@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express()
 const {getWords} = require('./controller.js')
 
-const {SERVER_PORT} = process.env
+//const {SERVER_PORT} = process.env
 const {seed} = require('./seed.js')
 
 
@@ -22,10 +22,10 @@ app.get('/', function(req, res){
 
 app.use(express.static('public'))
 
-app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
+//app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
 
-// const port = process.env.PORT || 4000
+const port = process.env.PORT || 4000
 
-// app.listen(port, () =>{
-//     console.log(`Listening on port ${port}`)
-// })
+app.listen(port, () =>{
+    console.log(`Listening on port ${port}`)
+})
