@@ -10,7 +10,7 @@ const {seed} = require('./seed.js')
 
 
 app.use(cors())
-//app.use(express.json())
+app.use(express.json())
 
 app.post('/seed', seed)
 app.get('/words', getWords)
@@ -18,7 +18,6 @@ app.get('/words', getWords)
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, '../index.html'))
-    rollbar.info('inside homepage')
 })
 
 app.use(express.static('public'))
