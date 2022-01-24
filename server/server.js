@@ -15,12 +15,13 @@ app.use(express.json())
 app.post('/seed', seed)
 app.get('/words', getWords)
 
+app.use(express.static('public'))
+
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, '../index.html'))
 })
 
-app.use(express.static('public'))
 
 //app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
 

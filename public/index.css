@@ -47,11 +47,11 @@ h2{
     top: 10%;
     transform-style: preserve-3d;
     margin-right: 4px;
-    @for $i from 1 through 5 {
+    /* @for $i from 1 through 5 {
       &:nth-child(#{$i}) {
         animation-delay: 140ms * $i;
       }
-    }
+    } */
 }
 
 @keyframes scaling {
