@@ -11,7 +11,7 @@ const modalContent = document.getElementById('modal-content')
 let wordFromDB = ""
 
 function getWord(){
-    axios.get('http://localhost:4000/words')
+    axios.get('/words')
     .then(res =>{
       //  console.log('res inside index.js', res.data[0])
       let wordArray = res.data[0]
