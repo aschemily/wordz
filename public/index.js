@@ -24,7 +24,9 @@ function getWord(){
     })
 }
 
-console.log('word from db', wordFromDB)
+getWord()
+
+//console.log('word from db', wordFromDB)
 
 function refresh() {    
     setTimeout(function () {
@@ -97,4 +99,3 @@ function userSubmitted(e){
 
 form.addEventListener('submit', userSubmitted)
 
-getWord()
