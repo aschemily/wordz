@@ -1,3 +1,5 @@
+const { default: axios } = require("axios")
+
 console.log('inside js')
 const inputWord = document.getElementById('input-word')
 const submitBtn = document.getElementById('submit-word')
@@ -9,6 +11,8 @@ const myModal = document.getElementById('my-modal')
 const modalContent = document.getElementById('modal-content')
 
 let example = "hello"
+
+
 
 function refresh() {    
     setTimeout(function () {
