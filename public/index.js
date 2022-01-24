@@ -1,5 +1,3 @@
-const { default: axios } = require("axios")
-
 console.log('inside js')
 const inputWord = document.getElementById('input-word')
 const submitBtn = document.getElementById('submit-word')
@@ -10,9 +8,23 @@ const divCounter = document.getElementById('div-counter')
 const myModal = document.getElementById('my-modal')
 const modalContent = document.getElementById('modal-content')
 
-let example = "hello"
+let wordFromDB = ""
 
+function getWord(){
+    axios.get('http://localhost:4000/words')
+    .then(res =>{
+      //  console.log('res inside index.js', res.data[0])
+      let wordArray = res.data[0]
+      //console.log('word array is', wordArray)
+     
+     let word = wordArray[Math.floor(Math.random() * wordArray.length)]
+     console.log('word inside axios is', word.word)
 
+        wordFromDB = word.word
+    })
+}
+
+console.log('word from db', wordFromDB)
 
 function refresh() {    
     setTimeout(function () {
@@ -21,7 +33,7 @@ function refresh() {
 }
 
 function wordOfTheDay(word, userWord){
-   // console.log('word', word, 'user word', userWord)
+    console.log('word', word, 'user word', userWord)
     let userList = document.createElement('li')
     let splitUserWord = userWord.split('')
     let splitWord = word.split('')
@@ -62,10 +74,12 @@ let chances = 6
 function userSubmitted(e){
     e.preventDefault()
   //  console.log('e.target', e.target.input.value)
-  let wordOfTheDaySplit = example
+  let wordIs = wordFromDB.toLowerCase()
   let userWord = inputWord.value
 
-  wordOfTheDay(wordOfTheDaySplit, userWord)
+  console.log('wordOfTheDay is??', wordIs)
+
+  wordOfTheDay(wordIs, userWord)
   inputWord.value = ""
 
   chances -= 1
@@ -83,3 +97,4 @@ function userSubmitted(e){
 
 form.addEventListener('submit', userSubmitted)
 
+getWord()
