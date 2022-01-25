@@ -90,8 +90,7 @@ function userSubmitted(e){
       modalContent.innerHTML = `<span style='color: green;'>CONGRATS</span>`
       refresh()
   }else if(chances === 0){
-    modalContent.innerHTML = `<span style='color: blue;'>GAMEOVER</span>`
-    counter.innerHTML = `Word is: ${wordIs}`
+    modalContent.innerHTML = `<span style='color: blue;'>GAMEOVER word is: ${wordIs}</span>`
     refresh()
   }
 
