@@ -79,16 +79,20 @@ function userSubmitted(e){
   let wordIs = wordFromDB.toLowerCase()
   let userWord = inputWord.value
 
-  console.log('wordOfTheDay is??', wordIs)
+  console.log('wordOfTheDay is??', wordIs, 'user word is', userWord)
 
   wordOfTheDay(wordIs, userWord)
   inputWord.value = ""
 
   chances -= 1
 
-  if(chances === 0){
-      modalContent.innerHTML = `<span style='color: blue;'>GAME OVER</span>`
+  if(chances === 0 && wordIs === userWord){
+      modalContent.innerHTML = `<span style='color: green;'>CONGRATS</span>`
       refresh()
+  }else if(chances === 0){
+    modalContent.innerHTML = `<span style='color: blue;'>GAMEOVER</span>`
+    counter.innerHTML = `Word is: ${wordIs}`
+    refresh()
   }
 
   counter.innerHTML = `${chances}`
