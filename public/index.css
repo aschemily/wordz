@@ -91,6 +91,11 @@ h2{
     }
   }
 
+  #instructions{
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+  }
+
 #word-form{
     align-items: center;
   justify-content: center;
